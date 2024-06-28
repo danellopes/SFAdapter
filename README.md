@@ -12,8 +12,6 @@ This pattern, therefore, promotes interface compatibility, ensuring that dispara
 
 ### Adapter Caching
 
-### Adapter Caching
-
 Caching in the context of the Adapter Design Pattern is a performance optimization strategy meant to speed up the system. It involves storing the results of complex calculations the first time they're computed. These results are stored in a cache with a unique key, often a hash value. When the adapter is called again with the same parameters, instead of repeating the costly computation, the system first checks the cache. If the result is in the cache (a 'cache hit'), it's returned directly, saving time and computational resources. If the result is not in the cache (a 'cache miss'), the calculation is performed, and the result stored in the cache for future use. This approach is particularly beneficial when the adapter is used frequently and the computations are resource-intensive.
 
 If you're interested in the [udemy course](https://www.udemy.com/course/design-patterns-csharp-dotnet) by [Dmitri Nesteruk](https://www.udemy.com/user/dmitrinesteruk/).
