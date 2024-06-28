@@ -1,8 +1,13 @@
 public class LineToPointAdapter {
     private static Integer count = 0;
-    public List<Point> points = new List<Point>();
+    private static Map<Integer, List<Point>> cache = new Map<Integer,List<Point>>();
+    private Line line;
 
     public LineToPointAdapter(Line line) {
+        this.line = line;
+        Integer hash = line.getHashCode();
+        if(cache.containsKey(hash)) return;
+
         count++;
         System.debug(
             String.format(
@@ -17,6 +22,8 @@ public class LineToPointAdapter {
             )
         );
 
+        List<Point> points = new List<Point>();
+
         Integer left = Math.min(line.lineStart.x, line.lineEnd.x);
         Integer right = Math.Max(line.lineStart.x, line.lineEnd.x);
         Integer top = Math.min(line.lineStart.y, line.lineEnd.y);
@@ -28,15 +35,22 @@ public class LineToPointAdapter {
         {
             for (Integer y = top; y <= bottom; ++y)
             {
-                this.points.add(new Point(left, y));
+                points.add(new Point(left, y));
             }
         }
         else if (dy == 0)
         {
             for (Integer x = left; x <= right; ++x)
             {
-                this.points.add(new Point(x, top));
+                points.add(new Point(x, top));
             }
         }
+
+        cache.put(hash, points);
+    }
+
+    public List<Point> getPoints()
+    {
+        return cache.get(this.line.getHashCode());
     }
 }

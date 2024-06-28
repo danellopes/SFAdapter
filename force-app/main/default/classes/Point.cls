@@ -6,4 +6,9 @@ public class Point {
         this.x = x;
         this.y = y;
     }
+
+    public Integer getHashCode()
+    {
+        return (this.x * 397) ^ this.y;
+    }
 }

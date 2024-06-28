@@ -11,7 +11,7 @@ public class Sketcher {
             for(Line line : vo.vector)
             {
                 LineToPointAdapter adapter = new LineToPointAdapter(line);
-                for(Point point : adapter.points)
+                for(Point point : adapter.getPoints())
                 {
                     DrawPoint(point);
                 }
